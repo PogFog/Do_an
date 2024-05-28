@@ -124,7 +124,7 @@ const OrderPage = () => {
     const result = order?.orderItemsSlected?.reduce((total, cur) => {
       console.log("cur.discount", cur.discount);
       const totalDiscount = cur.discount ? cur.discount : 0;
-      return total + (priceMemo * (totalDiscount * cur.amount)) / 100;
+      return total + (priceMemo * totalDiscount) / 100;
     }, 0);
     if (Number(result)) {
       return result;
@@ -134,11 +134,11 @@ const OrderPage = () => {
   }, [order]);
   const diliveryPriceMemo = useMemo(() => {
     if (priceMemo >= 2000000 && priceMemo < 5000000) {
-      return 10000;
+      return 15000;
     } else if (priceMemo >= 5000000 || order?.orderItemsSlected?.length === 0) {
       return 0;
     } else {
-      return 200000;
+      return 25000;
     }
   }, [priceMemo]);
 
@@ -229,9 +229,9 @@ const OrderPage = () => {
               <StepComponent
                 items={itemsDelivery}
                 current={
-                  diliveryPriceMemo === 10000
+                  diliveryPriceMemo === 15000
                     ? 2
-                    : diliveryPriceMemo === 20000
+                    : diliveryPriceMemo === 25000
                     ? 1
                     : order.orderItemsSlected.length === 0
                     ? 0
