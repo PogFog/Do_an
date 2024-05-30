@@ -23,7 +23,7 @@ import { useEffect } from "react";
 const HomePage = () => {
   const searchProduct = useSelector((state) => state?.product?.search);
   const searchDebounce = useDebounce(searchProduct, 1000);
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState(12);
   const [loading, setLoading] = useState(false);
   const [typeProducts, setTypeProducts] = useState([]);
   const fetchProductAll = async (context) => {
@@ -87,8 +87,8 @@ const HomePage = () => {
   };
 
   // Lấy ra 3 sản phẩm ngẫu nhiên từ mỗi loại type
-  const randomDogProducts = getRandomProducts(dogProducts, 6);
-  const randomCatProducts = getRandomProducts(catProducts, 6);
+  const randomDogProducts = getRandomProducts(dogProducts, 12);
+  const randomCatProducts = getRandomProducts(catProducts, 12);
   const randomAccessoryProducts = getRandomProducts(accessoryProducts, 6);
   const randomPetFood = getRandomProducts(petFood, 6);
   return (
